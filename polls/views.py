@@ -28,13 +28,14 @@ class ResultsView(generic.DetailView):
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    context = {
-        "question": question,
-        "error_message": "You didn't select a choice"
-    }
     try:
+        # accesses post body, in this instance, choice is the key and the id is the value we want to extract and use
         selected_choice = question.choice_set.get(pk=request.POST["choice"])
     except (KeyError, Choice.DoesNotExist):
+        context = {
+            "question": question,
+            "error_message": "You didn't select a choice"
+        }
         # redisplay question voting form
         return render(
             request,
