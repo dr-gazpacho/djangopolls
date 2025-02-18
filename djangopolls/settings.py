@@ -106,8 +106,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-# storing times in UTC in DB, convert to local time for user(s)
-TIME_ZONE = 'UTC'
+# was storing times in UTC in DB, convert to local time for user(s)
+# TIME_ZONE = 'UTC'
+USE_TZ = True
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
